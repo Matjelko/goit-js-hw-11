@@ -1,5 +1,3 @@
-"use strict"
-
 import './css/styles.css';
 import Notiflix from 'notiflix';
 import SimpleLightbox from "simplelightbox";
