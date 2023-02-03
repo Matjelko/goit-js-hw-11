@@ -65,4 +65,5 @@
   .info {
     display: flex;
     justify-content: space-around;
+    font-size: calc(10px + 2 * ((100vw - 320px) / 900));
   }

@@ -15,10 +15,10 @@ let pagesLoaded = 0;
 let imagesLoaded = 0;
 let hits = 1;
 
-async function fetchImages(input, page = 1, outcomes = 20){
+async function fetchImages(input, page = 1, outcomes = 40){
     const response = await axios.get(`https://pixabay.com/api/?key=${API_KEY}&q=${input}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${outcomes}`);
     hits = response.data.totalHits;
-    imagesLoaded += 20;
+    imagesLoaded += 40;
     return response.data;
 }
 
@@ -105,7 +105,7 @@ function cards(hits, clear = true) {
 
 function handleScroll() {
     const end =
-        window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+        window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight;
         console.log('window.innerHeight', window.innerHeight);
         console.log('window.pageYOffset', window.pageYOffset);
         console.log('document.body.offsetHeight', document.body.offsetHeight);
