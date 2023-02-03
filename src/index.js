@@ -18,12 +18,13 @@ let hits = 1;
 async function fetchImages(input, page = 1, outcomes = 40){
     const response = await axios.get(`https://pixabay.com/api/?key=${API_KEY}&q=${input}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${outcomes}`);
     hits = response.data.totalHits;
-    imagesLoaded += 40;
+    imagesLoaded += outcomes;
     return response.data;
 }
 
 function handleForm(event){
     event.preventDefault();
+    imagesLoaded = 0;
     fetchImages(input.value).then(results => {
         if(results.hits.length < 1){
             Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
@@ -38,6 +39,8 @@ function handleForm(event){
 }
 
 btn.addEventListener('click', handleForm);
+
+pagesLoaded = 1;
 
 function cards(hits, clear = true) {
     if (clear) {
